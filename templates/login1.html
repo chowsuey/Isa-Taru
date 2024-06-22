@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/login.css">
+    <title>login</title>
+
+</head>
+
+<body>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form>
+                <h1>Crear Cuenta</h1>
+                <div class="social-icons">
+                </div>
+                <span>o use su correo electrónico para registrarse</span>
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button>Crear Cuenta</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <h1>Inicio de Sesion</h1>
+                <div class="social-icons">
+                </div>
+                <span>o use su correo electrónico para registrarse</span>
+                <input class="datos1" type="email" placeholder="Email" required>
+                <input class="datos1" type="password" placeholder="Password" required>
+                <a href="#">Olvido su contraseña ?</a>
+                <a href="/templates/home.html"><button id="efec2"> Inicia sesion </button></a>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Bienvenido!</h1>
+                    <p>Regístrese con sus datos personales para utilizar todas las funciones del sitio</p>
+                    <button class="hidden" id="login">Inicia Sesion</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Hola, amigo!</h1>
+                    <p>Regístrese con sus datos personales para utilizar todas las funciones del sitio</p>
+                    <button class="hidden" id="register">Crear Cuenta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/scriptlog.js"></script>
+</body>
+
+</html>
