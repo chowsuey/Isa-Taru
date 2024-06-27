@@ -1,0 +1,19 @@
+*{
+
+    font-family: cursive ;
+    background-color:#EFD9CE ;
+
+
+}
+.iconmenus{
+    width: 30px;
+    height: 30px;
+}
+.iconsupport{
+    width: 30px;
+    height: 30px;
+}
+.producedit{
+    border-radius: 10px;
+    box-shadow: 1px 2px 30px rgba(0, 0, 0, 0.338);
+}
