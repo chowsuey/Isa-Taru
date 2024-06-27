@@ -1,8 +1,10 @@
 from flask import Flask, render_template
+from helpers import login_required
 app = Flask(__name__)
 
 
 @app.route('/')
+@login_required
 def index():
     return render_template('index.html')
 
