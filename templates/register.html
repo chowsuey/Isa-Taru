@@ -6,21 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="/static/css/login.css">
-    <title>Login</title>
+    <title>Crear Cuenta</title>
+    <script>
+      
+        function validarContra() {
+            var pass1 = document.getElementById("pass").value;
+            var pass2 = document.getElementById("pass2").value;
 
+            if (pass1 !== pass2) {
+                alert("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 
 <body>
 
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form action="/register" method="post">
+            <form action="/register" method="post" onsubmit="return validarContra()">
                 <h1>Crear Cuenta</h1>
                 <span>o use su correo electrónico para registrarse</span>
-                <input type="text" placeholder="Nombre" required name="user">
-                <input type="password" placeholder="Contraseña" required name="pass">
-                <input type="password" placeholder="Repetir Contraseña" required name="pass2">
-                <button>Crear Cuenta</button>
+                <input type="text" placeholder="Nombre" required name="user" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" title="El nombre no debe contener números ni caracteres especiales">
+                <input type="password" placeholder="Contraseña" required name="pass" id="pass" pattern="[A-Za-z0-9@#$%^&+=]+" title="La contraseña solo puede contener letras, números y los símbolos @#$%^&+=">
+                <input type="password" placeholder="Repetir Contraseña" required name="pass2" id="pass2">
+                <button type="submit">Crear Cuenta</button>
             </form>
         </div>
         <div class="form-container sign-in">
