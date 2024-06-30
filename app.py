@@ -1,10 +1,26 @@
-from flask import Flask, render_template, request, redirect, g, flash
+from flask import Flask, render_template, request, redirect, g, flash, session
 from werkzeug.security import check_password_hash, generate_password_hash
+from helpers import login_required
+from flask_session import Session
 import sqlite3
 import re
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
+# Configure session to use filesystem (instead of signed cookies)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
+@app.after_request
+def after_request(response):
+    """Ensure responses aren't cached"""
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Expires"] = 0
+    response.headers["Pragma"] = "no-cache"
+    return response
+
+
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -19,8 +35,9 @@ def close_connection(exception):
         db.close()
 
 @app.route('/')
+@login_required
 def index():
-    return render_template('login1.html')
+    return render_template('home.html')
 
 #-------------------------------------------------------------------------------------
 def validarContraSimbolo(password):
@@ -37,18 +54,23 @@ def register():
 
         if not user or not passw or not pass2:
             flash("Por favor, complete todos los campos")
+            print("Erorr1")
             return render_template("register.html")
 
-        if not user.isalpha():
-            flash("El nombre de usuario no puede contener números")
-            return render_template("register.html")
+        #Validacion mala
+        # if not user.isalpha():
+        #     flash("El nombre de usuario no puede contener números")
+        #     print("Error 2")
+        #     return render_template("register.html")
 
         if not validarContraSimbolo(passw):
             flash("La contraseña solo puede contener letras, números y los símbolos @#$%^&+=")
+            print("Error3")
             return render_template("register.html")
 
         if passw != pass2:
             flash("Las contraseñas no coinciden")
+            print("Error4")
             return render_template("register.html")
 
         hash = generate_password_hash(passw)
@@ -66,6 +88,7 @@ def register():
 #-------------------------------------------------------------------------------------
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    session.clear()
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
@@ -82,8 +105,8 @@ def login():
             flash("Nombre de usuario o contraseña incorrectos")
             return render_template("login1.html")
 
-        flash("Inicio de sesión exitoso")
-        return redirect("/login")
+        session["user"] = user
+        return redirect("/")
     
     
     return render_template("login1.html")
@@ -91,7 +114,11 @@ def login():
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8000, debug=True)
 
-
+@app.route("/logout")
+@login_required
+def logout():
+    session.clear()
+    return redirect("/")
 
 # File "C:\Users\Jose Tercero\Documents\Isataru\Isa-Taru\app.py", line 57, in register
 # cur.execute("INSERT INTO Usuario (UserName, Password) VALUES (?, ?)", (user, hash))
