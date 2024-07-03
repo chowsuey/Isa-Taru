@@ -7,30 +7,29 @@
     <link rel="stylesheet" href="/static/css/home.css">
 </head>
 <body>
-<div id="seccionP">
-    <div>
+    <div class="madre">
+<div id="menu2">
         <form>
-          <img class="iconmenus" src="/templates/icons3/usuario.png" alt="logo de cuenta">
-            <h4>Cuenta</h4>
-             <h1>Home</h1>
-               <img class="iconmenus" src="/templates/icons3/casa.png" alt="home">
-                <img class="iconmenus" src="/templates/icons3/menu.png" alt="logo de menu" >
-            
-                <input id="buscador" type="text" placeholder="Buscar producto">
-                  <button>Buscar</button>
-                <img class="iconmenus" src="/templates/icons3/lupa.png" alt="logo de buscador">
+          <img id="logo-cuenta" class="iconmenus" src="/templates/icons3/usuario.png" alt="logo de cuenta">
+            <h4 id="cuenta1">Cuenta</h4>
+            <h1 id="home13">Home</h1>
+               <img id="casita" class="iconmenus" src="/templates/icons3/casa.png" alt="home">
+                <input id="buscador" type="text" placeholder="  Buscar Producto !">
+                  <button id="botonbus">Buscar</button>
+                <img id="buscadoricon" class="iconmenus" src="/templates/icons3/lupa.png" alt="logo de buscador">
+          
 
-          <div class="menu options">
-            <h3 id="menu1">Menu</h3>
-          </div>
-
-                <img src="" alt="logo de la pagina">
+                <img id="logo12" src="/templates/icons3/logo tienda cs50.jpg" alt="logo de la pagina">
         </form>
     </div>
-</div>  
-    <section>
+    <div id="divop">
+        <p class=" submenu">contactanos</p>
+        <p class="submenu">carrito</p>
+        <img id="menuos" class="iconmenus" src="/templates/icons3/menu.png" alt="logo de menu" >
+       </div>
+    <section class="principal">
         <p>dispositivos mobiles</p>
-        <img class="iconmenus" src="/templates/icons3/telefono-movil.png" alt="movil">
+        <img id="celular" class="iconmenus" src="/templates/icons3/telefono-movil.png" alt="movil">
         <div class="producto1">
             <p>Redmi - Black Sharck 4 Pro</p>
             <img class="producedit" src="/templates/productos/black shark.jpeg" alt="producto?">
@@ -181,48 +180,7 @@
             <p>Precio - </p>
             <p>$ </p>
         </div>
-        <p>dispositivos portatiles</p>
-        <img class="iconmenus" src="/templates/icons3/ordenador-portatil.png" alt="laptop">
-        <div class="producto1">
-            <p>Laptop Lenovo Ryzen 7</p>
-            <img class="producedit" src="" alt="producto?">
-        </div>
-        <div class="producto1">
-            <p>producto 12</p>
-            <img src="" alt="producto?">
-        </div>
-        <div class="producto1">
-            <p>producto 13</p>
-            <img src="" alt="producto?">
-        </div>
-        <div class="producto1">
-            <p>producto 14</p>
-            <img src="" alt="producto?">
-        </div>
-        <div class="producto1">
-            <p>producto 15</p>
-            <img src="" alt="producto?">
-        </div>
-        <div class="producto1">
-            <p>producto 16</p>
-            <img src="" alt="producto?">
-        </div>
-        <div class="producto1">
-            <p>producto 17</p>
-            <img src="" alt="producto?">
-        </div>
-        <div class="producto1">
-            <p>producto 18</p>
-            <img src="" alt="producto?">
-        </div>
-        <div class="producto1">
-            <p>producto 19</p>
-            <img src="" alt="producto?">
-        </div>
-        <div class="producto1">
-            <p>producto 20</p>
-            <img src="" alt="producto?">
-        </div>
+       
     </section>
 <footer>
     <p>Derechos Reservados</p>
@@ -231,5 +189,7 @@
    <a href=""> <img class="iconsupport" src="/templates/icons2/gmail.png" alt="soluxbot@gmail.com"></a>
    <a href=""> <img class="iconsupport" src="/templates/icons2/gorjeo (1).png" alt="twitter"></a>
 </footer>
+</div>
+<script src="/static/js/home.js" ></script>
 </body>
 </html>
