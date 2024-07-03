@@ -285,13 +285,7 @@ background-color: #ff549e;
     z-index: 10;
 }
 
-#celular{
-    width: 30px;
-    height: 30px;
-    display: inline-block;
-    position: relative;
-    top: -30px;
-}
+
 
 .producto1{
     position:relative;
@@ -305,6 +299,7 @@ background-color: #ff549e;
     left: 50px;
     padding: 30px;
     margin: auto;
+
 }
 
 .producedit:hover{
