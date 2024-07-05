@@ -1,16 +1,19 @@
-from flask import Flask, render_template, request, redirect, g, flash, session
+from flask import Flask, render_template, request, redirect, g, session
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import login_required
-from flask_session import Session
 import sqlite3
 import re
+import os
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
-# Configure session to use filesystem (instead of signed cookies)
+
+UPLOAD_FOLDER = 'static/img/uploads' 
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'} 
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
+
 
 @app.after_request
 def after_request(response):
@@ -19,8 +22,6 @@ def after_request(response):
     response.headers["Expires"] = 0
     response.headers["Pragma"] = "no-cache"
     return response
-
-
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -35,11 +36,15 @@ def close_connection(exception):
         db.close()
 
 @app.route('/')
-@login_required
 def index():
-    return render_template('home.html')
+    if "user_id" in session:
+        cur = get_db().cursor()
+        cur.execute("SELECT * FROM Productos WHERE UsuarioID =?", (session["user_id"],))
+        productos = cur.fetchall()
+        return render_template('home.html', productos=productos)
+    else:
+        return render_template('login1.html')
 
-#-------------------------------------------------------------------------------------
 def validarContraSimbolo(password):
     return bool(re.match(r'^[a-zA-Z0-9@#$%^&+=]+$', password))
 
@@ -53,24 +58,12 @@ def register():
         pass2 = request.form.get("pass2")
 
         if not user or not passw or not pass2:
-            flash("Por favor, complete todos los campos")
-            print("Erorr1")
             return render_template("register.html")
 
-        #Validacion mala
-        # if not user.isalpha():
-        #     flash("El nombre de usuario no puede contener números")
-        #     print("Error 2")
-        #     return render_template("register.html")
-
         if not validarContraSimbolo(passw):
-            flash("La contraseña solo puede contener letras, números y los símbolos @#$%^&+=")
-            print("Error3")
             return render_template("register.html")
 
         if passw != pass2:
-            flash("Las contraseñas no coinciden")
-            print("Error4")
             return render_template("register.html")
 
         hash = generate_password_hash(passw)
@@ -80,12 +73,10 @@ def register():
             get_db().commit()
             return redirect("/login")
         except sqlite3.IntegrityError:
-            flash("El nombre de usuario ya está registrado")
             return render_template("register.html")
 
     return render_template("register.html")
 
-#-------------------------------------------------------------------------------------
 @app.route("/login", methods=["GET", "POST"])
 def login():
     session.clear()
@@ -94,33 +85,63 @@ def login():
         password = request.form.get("password")
 
         if not username or not password:
-            flash("Por favor, complete todos los campos")
             return render_template("login1.html")
 
         cur = get_db().cursor()
-        cur.execute("SELECT * FROM Usuario WHERE UserName = ?", (username,))
+        cur.execute("SELECT * FROM Usuario WHERE UserName =?", (username,))
         user = cur.fetchone()
 
         if user is None or not check_password_hash(user[2], password):
-            flash("Nombre de usuario o contraseña incorrectos")
-            return render_template("login1.html")
+            return render_template("home.html")
 
-        session["user"] = user
-        return redirect("/")
-    
-    
-    return render_template("login1.html")
+        session["user_id"] = user[0] 
+        session["username"] = user[1]
 
-if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8000, debug=True)
+        return redirect("/agregar_telefono") 
+    return render_template("home.html")
+
+
+@app.route('/agregar_telefono', methods=['GET', 'POST'])
+def agregar_telefono():
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        precio = request.form['precio']
+        imagen = request.files['imagen']
+
+        cur = get_db().cursor()
+        cur.execute("SELECT Precio FROM Productos WHERE Precio =?", (precio,))
+        if cur.fetchone():
+            # El precio ya existe, no se puede insertar
+            return render_template('home.html', error="El precio ya existe")
+
+        if imagen:
+            filename = imagen.filename
+            imagen.save(os.path.join('static/img/productos', filename))
+            imagen_path = 'static/img/productos/' + filename
+
+        cur.execute("INSERT INTO Productos (Nombre, Precio, Imagen) VALUES (?,?,?)",
+                    (nombre, precio, imagen_path))
+        get_db().commit()
+
+        return render_template('home.html', imagen_path=imagen_path)
+    else:
+        return redirect('/')
+
+
+@app.route('/')
+def home():
+    if "user_id" in session:
+        cur = get_db().cursor()
+        cur.execute("SELECT * FROM Productos WHERE UsuarioID =?", (session["user_id"],))
+        productos = cur.fetchall()
+        return render_template('home.html', productos=productos)
+    else:
+        return render_template('login1.html')
 
 @app.route("/logout")
-@login_required
 def logout():
     session.clear()
     return redirect("/")
 
-# File "C:\Users\Jose Tercero\Documents\Isataru\Isa-Taru\app.py", line 57, in register
-# cur.execute("INSERT INTO Usuario (UserName, Password) VALUES (?, ?)", (user, hash))
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# sqlite3.OperationalError: unable to open database file
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8000, debug=True)
