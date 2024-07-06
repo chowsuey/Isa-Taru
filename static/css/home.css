@@ -31,8 +31,10 @@ body {
     display: inline-block;
     opacity: 0.8;
     position: relative;
-    left: -610px; /*derecha e izquierda*/
-    top: -10px; /*abajo y arriba*/
+    left: -610px;
+    /*derecha e izquierda*/
+    top: -10px;
+    /*abajo y arriba*/
     border-radius: 10px;
     width: 80px;
     height: 80px;
@@ -55,7 +57,7 @@ body {
     background: linear-gradient(to right, #a90e51, #348237);
     width: 100%;
     height: 100px;
-   /* margin: 10px; */
+    /* margin: 10px; */
     padding: 0 20px;
     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.391);
     position: relative;
@@ -68,13 +70,17 @@ body {
     justify-content: center;
 }
 
-#logo-cuenta, #casita, #buscadoricon, #botonbus, #logo {
+#logo-cuenta,
+#casita,
+#buscadoricon,
+#botonbus,
+#logo {
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.415);
     transition: 0.1s;
     cursor: pointer;
-    width: 50px; 
+    width: 50px;
     height: auto;
 }
 
@@ -82,8 +88,9 @@ body {
     background-color: #49b54c;
     position: relative;
     left: 650px;
-    top: 50px; 
-    cursor: pointer; /* Cambia el cursor al hacer hover sobre el logo */
+    top: 50px;
+    cursor: pointer;
+    /* Cambia el cursor al hacer hover sobre el logo */
 }
 
 #logo-cuenta:hover {
@@ -107,16 +114,20 @@ body {
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.415);
     display: inline-block;
     position: relative;
-    left: 330px; /*derecha e izquierda*/
-    top: -45px; /*abajo y arriba*/
-    
+    left: 330px;
+    /*derecha e izquierda*/
+    top: -45px;
+    /*abajo y arriba*/
+
 }
 
 #casita {
     background-color: #e41d73;
     position: relative;
-    left: 195px; /*derecha e izquierda*/
-    top: -30px; /*abajo y arriba*/
+    left: 195px;
+    /*derecha e izquierda*/
+    top: -30px;
+    /*abajo y arriba*/
 }
 
 #casita:hover {
@@ -138,15 +149,19 @@ body {
     box-shadow: none;
     color: white;
     position: relative;
-    left: 280px; /*derecha e izquierda*/
-    top: -50px; /*abajo y arriba*/
+    left: 280px;
+    /*derecha e izquierda*/
+    top: -50px;
+    /*abajo y arriba*/
 }
 
 #buscadoricon {
     background-color: #e41d73;
     position: relative;
-    left: 285px; /*derecha e izquierda*/
-    top: -30px; /*abajo y arriba*/
+    left: 285px;
+    /*derecha e izquierda*/
+    top: -30px;
+    /*abajo y arriba*/
 }
 
 #buscadoricon:hover {
@@ -179,8 +194,10 @@ body {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.452);
     transition: 0.3s;
     position: relative;
-    left: 205px; /*derecha e izquierda*/
-    top: -85px; /*abajo y arriba*/
+    left: 205px;
+    /*derecha e izquierda*/
+    top: -85px;
+    /*abajo y arriba*/
 }
 
 #divop:hover {
@@ -195,8 +212,10 @@ body {
     border-radius: 10px;
     transition: 0.1s;
     position: relative;
-    left: -35px; /*derecha e izquierda*/
-    top: 0px; /*abajo y arriba*/
+    left: -35px;
+    /*derecha e izquierda*/
+    top: 0px;
+    /*abajo y arriba*/
 }
 
 #divop:hover #menuos {
@@ -231,9 +250,11 @@ body {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.375);
     margin: 230px 80px;
     padding: 20px;
-    margin-top: 5px; /* Mantienes el margen superior */
-    margin-left: 80px; /* Ajustas el margen izquierdo */
-    margin-right: 80px; /* Ajustas el margen derecho */
+    margin-top: 5px;
+    margin-left: 80px;
+    /* Ajustas el margen izquierdo */
+    margin-right: 80px;
+    /* Ajustas el margen derecho */
 }
 
 .producto1 {
@@ -278,10 +299,46 @@ body {
 
 #userFor {
     position: relative;
-    left: -35px; /*derecha e izquierda*/
-    top: 0px; /*abajo y arriba*/
-
+    left: -35px;
+    top: 0px;
     font-weight: bold;
     color: #333;
 }
 
+.principal form {
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.principal form input[type="text"],
+.principal form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.principal form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.principal form button[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+select[name="tipo_producto"] {
+    position: absolute;
+    top: 535px;
+    left: 130px;
+}

@@ -1,86 +1,88 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="/static/css/home.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="madre">
-      <div id="menu2">
-        <form
-          action="/agregar_telefono"
-          method="post"
-          enctype="multipart/form-data"
-        >
-          <!-- Agrega un token CSRF aquí -->
-          <div class="logo-section">
-            <img
-              id="logo-cuenta"
-              class="iconmenus"
-              src="/static/img/icons3/usuario.png"
-              alt="Logo de cuenta"
-            />
-            <span id="username-display"></span>
-          </div>
+        <div id="menu2">
+            <form action="/agregar_telefono" method="post" enctype="multipart/form-data">
+                <!-- Agrega un token CSRF aquí -->
+                <div class="logo-section">
+                    <img id="logo-cuenta" class="iconmenus" src="/static/img/icons3/usuario.png" alt="Logo de cuenta" />
+                    <span id="username-display"></span>
+                </div>
 
-          <h1 id="home13">Home</h1>
-          <img
-            id="casita"
-            class="iconmenus"
-            src="/static/img/icons3/casa.png"
-            alt="Home"
-          />
-          <input id="buscador" type="text" placeholder="Buscar Producto!" />
+                <h1 id="home13">Home</h1>
+                <img id="casita" class="iconmenus" src="/static/img/icons3/casa.png" alt="Home" />
+                <input id="buscador" type="text" placeholder="Buscar Producto!" />
 
-          <img
-            id="buscadoricon"
-            class="iconmenus"
-            src="/static/img/icons3/lupa.png"
-            alt="Logo de buscador"
-          />
-          <img
-            id="logo12"
-            class="iconmenus"
-            src="/static/img/icons3/logo_tienda_cs50.png"
-            alt="Logo de la página"
-          />
-
-          <input
-            type="text"
-            name="nombre"
-            placeholder="Nombre del Producto"
-            required
-          />
-          <input type="text" name="precio" placeholder="Precio" required />
-          <input type="file" name="imagen" required />
-          <button type="submit">Agregar Producto</button>
-        </form>
-      </div>
-      <div id="divop">
-        <p class="submenu">contactanos</p>
-        <p class="submenu">carrito</p>
-        <img
-          id="menuos"
-          class="iconmenus"
-          src="/static/img/icons3/menu.png"
-          alt="Logo de menú"
-        />
-      </div>
-
-      <section class="principal">
-        <p>Derechos Reservados</p>
-        {% for producto in productos %}
-        <div class="producto1">
-          <p>{{ producto[1] }}</p>
-          <img class="producedit" src="{{ producto[3] }}" alt="Producto" />
-          <ul>
-            <li>Precio: ${{ producto[2] }}</li>
-          </ul>
+                <img id="buscadoricon" class="iconmenus" src="/static/img/icons3/lupa.png" alt="Logo de buscador" />
+                <img id="logo12" class="iconmenus" src="/static/img/icons3/logo_tienda_cs50.png"
+                    alt="Logo de la página" />
+            </form>
         </div>
-        {% endfor %}
-      </section>
+        <div id="divop">
+            <p class="submenu">contactanos</p>
+            <p class="submenu">carrito</p>
+            <img id="menuos" class="iconmenus" src="/static/img/icons3/menu.png" alt="Logo de menú" />
+        </div>
+        <section class="principal">
+            <h1>Agregar Teléfono</h1>
+            <form action="/agregar_telefono" method="post" enctype="multipart/form-data">
+                <!-- Agrega un token CSRF aquí -->
+                <input type="text" name="nombre" placeholder="Nombre del Producto" required />
+                <input type="text" name="modelo" placeholder="Modelo" required />
+                <input type="text" name="marca" placeholder="Marca" required />
+                <input type="text" name="precio" placeholder="Precio" required />
+                <input type="file" name="imagen" required />
+                <select name="tipo_producto">
+                    <option value="computadora">Computadora</option>
+                    <option value="celular">Celular</option>
+                </select>
+                <button type="submit">Agregar Producto</button>
+            </form>
 
-      <footer>
-        <p>Derechos
+            <div id="image-container">
+                <!-- images will be loaded here -->
+            </div>
+
+            <!-- Display the variables -->
+            <p>Nombre del producto: {{ nombre_producto }}</p>
+            <p>Precio: {{ precio_producto }}</p>
+            <p>Imagen: {{ imagen_producto }}</p>
+            <p>Modelo: {{ modelo_producto }}</p>
+            <p>Marca: {{ marca_producto }}</p>
+            <p>Tipo de producto: {{ tipo_producto }}</p>
+
+            {% for producto in productos %}
+            <div class="producto1">
+                <p>{{ producto[1] }}</p>
+                <img class="producedit" src="{{ producto[4] }}" alt="Producto" />
+                <ul>
+                    <li>Precio: ${{ producto[2] }}</li>
+                    <li>Marca: {{ producto[4].Nombre }}</li>
+
+                </ul>
+            </div>
+            {% endfor %}
+        </section>
+
+        <footer>
+            <p>Derechos Reservados</p>
+            <p>contactanos</p>
+            <a href="#"><img class="iconsupport" src="/static/img/icons2/facebook.png" alt="facebook" /></a>
+            <a href="#"><img class="iconsupport" src="/static/img/icons2/gmail.png" alt="soluxbot@gmail.com" /></a>
+            <a href="#"><img class="iconsupport" src="/static/img/icons2/gorjeo (1).png" alt="twitter" /></a>
+        </footer>
+
+        <script src="/static/js/home.js"></script>
+    </div>
+</body>
+
+</html>
