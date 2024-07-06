@@ -58,12 +58,20 @@
           alt="Logo de menú"
         />
       </div>
-
       <section class="principal">
         <h1>Agregar Teléfono</h1>
-        <form action="/agregar_telefono" method="post" enctype="multipart/form-data">
+        <form
+          action="/agregar_telefono"
+          method="post"
+          enctype="multipart/form-data"
+        >
           <!-- Agrega un token CSRF aquí -->
-          <input type="text" name="nombre" placeholder="Nombre del Producto" required />
+          <input
+            type="text"
+            name="nombre"
+            placeholder="Nombre del Producto"
+            required
+          />
           <input type="text" name="modelo" placeholder="Modelo" required />
           <input type="text" name="marca" placeholder="Marca" required />
           <input type="text" name="precio" placeholder="Precio" required />
@@ -72,23 +80,35 @@
             <option value="computadora">Computadora</option>
             <option value="celular">Celular</option>
           </select>
-         
           <button type="submit">Agregar Producto</button>
         </form>
-        <!-- Rest of the .principal section content -->
+
+        <div id="image-container">
+          <!-- images will be loaded here -->
+        </div>
+
+        <!-- Display the variables -->
+        <p>Nombre del producto: {{ nombre_producto }}</p>
+        <p>Precio: {{ precio_producto }}</p>
+        <p>Imagen: {{ imagen_producto }}</p>
+        <p>Modelo: {{ modelo_producto }}</p>
+        <p>Marca: {{ marca_producto }}</p>
+        <p>Tipo de producto: {{ tipo_producto }}</p>
+
         {% for producto in productos %}
         <div class="producto1">
           <p>{{ producto[1] }}</p>
-          <img class="producedit" src="{{ producto[3] }}" alt="Producto" />
+          <img class="producedit" src="{{ producto[4] }}" alt="Producto" />
           <ul>
             <li>Precio: ${{ producto[2] }}</li>
+            <li>Marca: {{ producto[4].Nombre }}</li>
+            
           </ul>
         </div>
         {% endfor %}
       </section>
 
       <footer>
-<<<<<<< HEAD
         <p>Derechos Reservados</p>
         <p>contactanos</p>
         <a href="#"
@@ -110,10 +130,8 @@
             alt="twitter"
         /></a>
       </footer>
+
+      <script src="/static/js/home.js"></script>
     </div>
-    <script src="/static/js/home.js"></script>
   </body>
 </html>
-=======
-        <p>Derechos
->>>>>>> 30fd0518a9e73947965779a20e2d6b607414eb43
