@@ -14,12 +14,13 @@
           method="post"
           enctype="multipart/form-data"
         >
+          <!-- Agrega un token CSRF aquí -->
           <div class="logo-section">
             <img
               id="logo-cuenta"
               class="iconmenus"
               src="/static/img/icons3/usuario.png"
-              alt="logo de cuenta"
+              alt="Logo de cuenta"
             />
             <span id="username-display">{{ username }}</span>
           </div>
@@ -29,7 +30,7 @@
             id="casita"
             class="iconmenus"
             src="/static/img/icons3/casa.png"
-            alt="home"
+            alt="Home"
           />
           <input id="buscador" type="text" placeholder="Buscar Producto!" />
 
@@ -37,24 +38,14 @@
             id="buscadoricon"
             class="iconmenus"
             src="/static/img/icons3/lupa.png"
-            alt="logo de buscador"
+            alt="Logo de buscador"
           />
           <img
             id="logo12"
             class="iconmenus"
             src="/static/img/icons3/logo_tienda_cs50.png"
-            alt="logo de la pagina"
+            alt="Logo de la página"
           />
-
-          <input
-            type="text"
-            name="nombre"
-            placeholder="Nombre del Producto"
-            required
-          />
-          <input type="text" name="precio" placeholder="Precio" required />
-          <input type="file" name="imagen" required />
-          <button type="submit">Agregar Producto</button>
         </form>
       </div>
       <div id="divop">
@@ -64,21 +55,33 @@
           id="menuos"
           class="iconmenus"
           src="/static/img/icons3/menu.png"
-          alt="logo de menu"
+          alt="Logo de menú"
         />
       </div>
 
       <section class="principal">
-        <p>Derechos Reservados</p>
-        {% for producto in productos %}
-        <div class="producto1">
-          <p>{{ producto[1] }}</p>
-          <img class="producedit" src="{{ producto[3] }}" alt="producto" />
-          <ul>
-            <li>Precio: ${{ producto[2] }}</li>
-          </ul>
-        </div>
-        {% endfor %}
+          <h1>Agregar Teléfono</h1>
+          <form action="/agregar_telefono" method="post" enctype="multipart/form-data">
+            <!-- Agrega un token CSRF aquí -->
+            <input type="text" name="nombre" placeholder="Nombre del Producto" required />
+            <input type="text" name="precio" placeholder="Precio" required />
+            <input type="file" name="imagen" required />
+            <button type="submit">Agregar Producto</button>
+          </form>
+        
+          <!-- Rest of the .principal section content -->
+          <p>Derechos Reservados</p>
+          {% for producto in productos %}
+          <div class="producto1">
+            <p>{{ producto[1] }}</p>
+            <img class="producedit" src="{{ producto[3] }}" alt="Producto" />
+            <ul>
+              <li>Precio: ${{ producto[2] }}</li>
+            </ul>
+          </div>
+          {% endfor %}
+        </section>
+        
       </section>
 
       <footer>

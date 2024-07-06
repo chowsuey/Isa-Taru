@@ -285,3 +285,34 @@ body {
     color: #333;
 }
 
+.principal form {
+    max-width: 400px; /* adjust the width to your liking */
+    margin: 40px auto; /* center the form */
+    padding: 20px; /* add some padding for breathing room */
+    background-color: #f9f9f9; /* add a light background color */
+    border: 1px solid #ddd; /* add a light border */
+    border-radius: 10px; /* add some rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* add some subtle shadow */
+  }
+  
+  .principal form input[type="text"], .principal form input[type="file"] {
+    width: 100%; /* make the input fields full-width */
+    padding: 10px; /* add some padding for comfort */
+    margin-bottom: 20px; /* add some space between fields */
+    border: 1px solid #ccc; /* add a light border */
+    border-radius: 5px; /* add some rounded corners */
+  }
+  
+  .principal form button[type="submit"] {
+    width: 100%; /* make the submit button full-width */
+    padding: 10px; /* add some padding for comfort */
+    background-color: #4CAF50; /* add a nice green color */
+    color: #fff; /* add white text color */
+    border: none; /* remove the border */
+    border-radius: 5px; /* add some rounded corners */
+    cursor: pointer; /* add a pointer cursor */
+  }
+  
+  .principal form button[type="submit"]:hover {
+    background-color: #3e8e41; /* add a darker green color on hover */
+  }
