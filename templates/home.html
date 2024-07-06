@@ -60,28 +60,31 @@
       </div>
 
       <section class="principal">
-          <h1>Agregar Teléfono</h1>
-          <form action="/agregar_telefono" method="post" enctype="multipart/form-data">
-            <!-- Agrega un token CSRF aquí -->
-            <input type="text" name="nombre" placeholder="Nombre del Producto" required />
-            <input type="text" name="precio" placeholder="Precio" required />
-            <input type="file" name="imagen" required />
-            <button type="submit">Agregar Producto</button>
-          </form>
-        
-          <!-- Rest of the .principal section content -->
-          <p>Derechos Reservados</p>
-          {% for producto in productos %}
-          <div class="producto1">
-            <p>{{ producto[1] }}</p>
-            <img class="producedit" src="{{ producto[3] }}" alt="Producto" />
-            <ul>
-              <li>Precio: ${{ producto[2] }}</li>
-            </ul>
-          </div>
-          {% endfor %}
-        </section>
-        
+        <h1>Agregar Teléfono</h1>
+        <form action="/agregar_telefono" method="post" enctype="multipart/form-data">
+          <!-- Agrega un token CSRF aquí -->
+          <input type="text" name="nombre" placeholder="Nombre del Producto" required />
+          <input type="text" name="modelo" placeholder="Modelo" required />
+          <input type="text" name="marca" placeholder="Marca" required />
+          <input type="text" name="precio" placeholder="Precio" required />
+          <input type="file" name="imagen" required />
+          <select name="tipo_producto">
+            <option value="computadora">Computadora</option>
+            <option value="celular">Celular</option>
+          </select>
+         
+          <button type="submit">Agregar Producto</button>
+        </form>
+        <!-- Rest of the .principal section content -->
+        {% for producto in productos %}
+        <div class="producto1">
+          <p>{{ producto[1] }}</p>
+          <img class="producedit" src="{{ producto[3] }}" alt="Producto" />
+          <ul>
+            <li>Precio: ${{ producto[2] }}</li>
+          </ul>
+        </div>
+        {% endfor %}
       </section>
 
       <footer>

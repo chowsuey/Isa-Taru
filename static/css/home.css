@@ -286,7 +286,6 @@ body {
 }
 
 .principal form {
-    max-width: 400px; /* adjust the width to your liking */
     margin: 40px auto; /* center the form */
     padding: 20px; /* add some padding for breathing room */
     background-color: #f9f9f9; /* add a light background color */
@@ -315,4 +314,10 @@ body {
   
   .principal form button[type="submit"]:hover {
     background-color: #3e8e41; /* add a darker green color on hover */
+  }
+
+  select[name="tipo_producto"] {
+    position: absolute;
+    top: 535px; /* move 50px from the top */
+    left: 130px; /* move 200px from the left */
   }
