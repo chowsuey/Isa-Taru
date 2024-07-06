@@ -163,3 +163,10 @@ def logout():
 
 if __name__ == '_main_':
     app.run(host='127.0.0.1', port=8000, debug=True)
+
+@app.route('/compra_exitosa')
+def compra_exitosa():
+    return render_template('success.html')
+
+if __name__ == '_main_':
+    app.run(debug=True)
