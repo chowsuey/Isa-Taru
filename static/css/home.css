@@ -74,14 +74,14 @@ body {
 #casita,
 #buscadoricon,
 #botonbus,
-#logo {
+#logo, iconsupport, .producedit {
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.415);
     transition: 0.1s;
     cursor: pointer;
-    width: 50px;
-    height: auto;
+    width: 50px; /* Ajusta el tamaño según sea necesario */
+    height: 50px; /* Ajusta el tamaño según sea necesario */
 }
 
 #logo-cuenta {
@@ -124,10 +124,8 @@ body {
 #casita {
     background-color: #e41d73;
     position: relative;
-    left: 195px;
-    /*derecha e izquierda*/
-    top: -30px;
-    /*abajo y arriba*/
+    left: -109px;
+    top: 9px;
 }
 
 #casita:hover {
@@ -149,20 +147,16 @@ body {
     box-shadow: none;
     color: white;
     position: relative;
-    left: 280px;
-    /*derecha e izquierda*/
-    top: -50px;
-    /*abajo y arriba*/
+    left: 284px;
+    top: -26px;
 }
+    #buscadoricon {
+        background-color: #e41d73;
+        position: relative;
+        left: 570px;
+        top: -68px;
+    }
 
-#buscadoricon {
-    background-color: #e41d73;
-    position: relative;
-    left: 285px;
-    /*derecha e izquierda*/
-    top: -30px;
-    /*abajo y arriba*/
-}
 
 #buscadoricon:hover {
     transform: scale(1.02);
@@ -212,10 +206,8 @@ body {
     border-radius: 10px;
     transition: 0.1s;
     position: relative;
-    left: -35px;
-    /*derecha e izquierda*/
+    left: -55px;
     top: 0px;
-    /*abajo y arriba*/
 }
 
 #divop:hover #menuos {
@@ -265,6 +257,11 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.348);
     padding: 30px;
     margin: 50px auto;
+}
+
+.producedit {
+    display: block; /* Hace que la imagen sea un bloque para poder centrarla */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
 }
 
 #logo {
@@ -339,6 +336,12 @@ body {
 
 select[name="tipo_producto"] {
     position: absolute;
-    top: 535px;
+    top: 567px;
     left: 130px;
+}
+
+img, #divop img, .producto1 img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

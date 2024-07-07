@@ -46,25 +46,11 @@
                     <option value="computadora">Computadora</option>
                     <option value="celular">Celular</option>
                 </select>
-                <a href="home.html">
                     <button type="submit">Agregar Producto</button>
-                    
-
-                </a>
 
             </form>
 
-            <div id="image-container">
-                <!-- images will be loaded here -->
-            </div>
-
-            <!-- Display the variables -->
-            <p>Nombre del producto: {{ nombre_producto }}</p>
-            <p>Precio: {{ precio_producto }}</p>
-            <p>Imagen: {{ imagen_producto }}</p>
-            <p>Modelo: {{ modelo_producto }}</p>
-            <p>Marca: {{ marca_producto }}</p>
-            <p>Tipo de producto: {{ tipo_producto }}</p>
+            
 
             {% for producto in productos %}
             <div class="producto1">

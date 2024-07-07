@@ -118,7 +118,7 @@ def agregar_telefono():
         cur.execute("SELECT * FROM Modelo WHERE nModelo =? AND id_Marca =?", (modelo, marca_id))
         modelo_id = cur.fetchone()
         if modelo_id is None:
-            cur.execute("INSERT INTO Modelo (nModelo, Descrip, id_Marca) VALUES (?,?,?)", (modelo, "", marca_id))
+            cur.execute("INSERT INTO Modelo (nModelo, Descrip, id_Marca) VALUES (?,?,?)", (modelo, "1", marca_id))
             get_db().commit()
             cur.execute("SELECT * FROM Modelo WHERE nModelo =? AND id_Marca =?", (modelo, marca_id))
             modelo_id = cur.fetchone()[0]
